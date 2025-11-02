@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Pendant</title>
+  <link rel="stylesheet" href="book.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Dancing+Script&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header>Choose Your Pendant Design
+    <button id="cart-btn">🛒 Cart</button>
+  </header>
+<div id="cart-panel">
+  <h2>Your Cart</h2>
+  <div id="cart-items">
+    <p>No items added yet</p>
+  </div>
+  <button id="close-cart">Close</button>
+</div>
+
+
+   <div class="book-container">
+     <div class="book-content">
+      <button class="close-book" onclick="closeBookNow()">✕</button>
+
+    <!-- Left -->
+    <div class="book-left">
+      <img id="productImg" src="fab_collection09-20251102-0001.jpg" alt="Gold Circle Pendant">
+    </div>
+
+    <!-- Right -->
+    <div class="book-right">
+      <h1 id="productTitle">Gold Circle Pendant</h1>
+
+      <div class="price">
+        <span class="discounted" id="book-original">₹999</span>
+        <span class="original" id="book-discounted">₹1499</span>
+      </div>
+
+      <div class="booking-price">
+        Booking Price: <span id="book-booking">₹300</span>
+      </div>
+
+      <label for="nameInput">Enter Name for Pendant:</label>
+      <input type="text" id="nameInput" placeholder="Type your name..." oninput="updatePreview()">
+      <label for="fontSelect">Choose Font Style:</label>
+<select id="fontSelect" onchange="updateFontPreview()">
+  <option value="'Great Vibes', cursive">Great Vibes</option>
+  <option value="'Pacifico', cursive">Pacifico</option>
+  <option value="'Dancing Script', cursive">Dancing Script</option>
+  <option value="'Roboto Slab', serif">Roboto Slab</option>
+</select>
+
+      <div class="font-preview" id="fontPreview">Your Name</div>
+
+      <div class="buttons">
+        <button class="add-cart" onclick="addToCart()">Add to Cart</button>
+        <button class="book-now" onclick="openUpiPopup()">Book Now</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="design-section">
+    <div class="design-box">
+      <img src="fab_collection09-20251102-0001.jpg" alt="Gold Circle Pendant" class="pendant-image">
+      <div class="design-name">Gold Circle</div>
+      <button class="book-btn"
+        data-image="fab_collection09-20251102-0001.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="_samiyacreation_2-20251102-0001.jpg" alt="Silver Pendant" class="pendant-image">
+      <div class="design-name">Silver Square</div>
+      <button class="book-btn"
+        data-image="_samiyacreation_2-20251102-0001.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="_samiyacreation_2-20251102-0002.jpg" alt="Rose Gold Pendant" class="pendant-image">
+      <div class="design-name">Rose Gold Heart</div>
+      <button class="book-btn"
+        data-image="_samiyacreation_2-20251102-0002.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="creation_samiya-20251102-0001.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <button class="book-btn"
+        data-image="creation_samiya-20251102-0001.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="Screenshot_2025-11-02-12-30-15-35_56a5d7f547b7ec4c705e63bf13c9c197.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <button class="book-btn"
+        data-image="Screenshot_2025-11-02-12-30-15-35_56a5d7f547b7ec4c705e63bf13c9c197.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="ganpati_gift_gallery-20251102-0001.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <button class="book-btn"
+        data-image="ganpati_gift_gallery-20251102-0001.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="wallet.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <button class="book-btn"
+        data-image="wallet.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="braclet.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <button class="book-btn"
+        data-image="braclet.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="bottle.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <button class="book-btn"
+        data-image="bottle.jpg"
+        data-name="Gold Circle Pendant"
+        data-original="1499"
+        data-discounted="999"
+        onclick="openBookNow(this)">Book Now</button>
+    </div>
+
+    <div class="design-box">
+      <img src="crown.jpg" alt="Classic Pendant" class="pendant-image">
+      <div class="design-name">Classic Pendant</div>
+      <!-- <button class="book-btn">Book Now</button> -->
+       <button class="book-btn"
+    data-image="crown.jpg"
+    data-name="Gold Circle Pendant"
+    data-original="1499"
+    data-discounted="999"
+    onclick="openBookNow(this)">Book Now</button>
+ 
+    </div>
+  </div>
+  <!-- Book Now Payment Popup -->
+<div id="upiPopup" class="upi-popup">
+  <div class="upi-content">
+    <button class="close-upi" onclick="closeUpiPopup()">✕</button>
+    <h2>Complete Your Booking</h2>
+    <p>Scan the UPI QR below to pay and upload your photo for customization.</p>
+
+    <img src="back.jpg" alt="UPI QR Code" class="upi-qr">
+
+    <label for="imageUpload">Upload Your Photo:</label>
+    <input type="file" id="imageUpload" accept="image/*">
+
+    <button class="confirm-booking" onclick="bookNow()">Confirm Booking</button>
+  </div>
+</div>
+
+  <script src="book.js">
+
+  </script>
+</body>
+</html>
