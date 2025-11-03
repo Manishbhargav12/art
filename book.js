@@ -62,6 +62,7 @@ document.getElementById('nameInput').addEventListener('input', updateFontPreview
     }
         const name = document.getElementById("nameInput").value.trim();
       alert(`Your booking request for the ‘${name}’ pendant has been received. We’ll verify the details and confirm your order shortly.`);
+      closeUpiPopup()
     }
 //     function openBookNow(imageSrc, title, discounted, original) {
 //   // document.getElementById("bookNowImage").src = imageSrc;
