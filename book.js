@@ -92,3 +92,36 @@ function openUpiPopup() {
 function closeUpiPopup() {
   document.getElementById("upiPopup").style.display = "none";
 }
+
+
+const popup = document.getElementById("popupOverlay");
+    const errorMsg = document.getElementById("errorMsg");
+
+    function openaddress() {
+      popup.style.display = "flex";
+    });
+
+    function closePopup() {
+      popup.style.display = "none";
+      errorMsg.textContent = "";
+    }
+
+    function submitForm() {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address1 = document.getElementById("address1").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const state = document.getElementById("state").value.trim();
+      const zip = document.getElementById("zip").value.trim();
+
+      if (!name || !phone || !address1 || !city || !state || !zip) {
+        errorMsg.textContent = "Please fill all required fields.";
+        return;
+      }
+
+      errorMsg.textContent = "";
+      alert("Shipping details submitted successfully!");
+      
+      closePopup();
+      openUpiPopup();
+    }
