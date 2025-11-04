@@ -54,12 +54,12 @@ document.getElementById('nameInput').addEventListener('input', updateFontPreview
       alert(`✅ "${name}" pendant added to your cart!`);
     }
 
-    function bookNow() {
-        const fileInput = document.getElementById('imageUpload');
-        if (!fileInput.files.length) {
-      alert("Please upload an image before confirming your order.");
-      return;
-    }
+    // function bookNow() {
+    //     const fileInput = document.getElementById('imageUpload');
+    //     if (!fileInput.files.length) {
+    //   alert("Please upload an image before confirming your order.");
+    //   return;
+    // }
         const name = document.getElementById("nameInput").value.trim();
       alert(`Your booking request for the ‘${name}’ pendant has been received. We’ll verify the details and confirm your order shortly.`);
       closeUpiPopup()
@@ -99,7 +99,7 @@ const popup = document.getElementById("popupOverlay");
 
     function openaddress() {
       popup.style.display = "flex";
-    });
+    };
 
     function closePopup() {
       popup.style.display = "none";
