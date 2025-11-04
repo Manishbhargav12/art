@@ -56,12 +56,31 @@
       <div class="font-preview" id="fontPreview">Your Name</div>
 
       <div class="buttons">
-        <button class="add-cart" onclick="addToCart()">Add to Cart</button>
+        <!-- <button class="add-cart" onclick="addToCart()">Add to Cart</button> -->
         <button class="book-now" onclick="openUpiPopup()">Book Now</button>
       </div>
     </div>
   </div>
   </div>
+
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+      <button class="close-btn" onclick="closePopup()">&times;</button>
+      <h2>Shipping Details</h2>
+      <div class="error" id="errorMsg"></div>
+
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <input type="text" id="address1" placeholder="Address Line 1" required>
+      <input type="text" id="address2" placeholder="Address Line 2">
+      <input type="text" id="city" placeholder="City" required>
+      <input type="text" id="state" placeholder="State" required>
+      <input type="text" id="zip" placeholder="Postal Code" required>
+
+      <button onclick="submitForm()">Submit</button>
+    </div>
+  </div>
+  
   <div class="design-section">
     <div class="design-box">
       <img src="fab_collection09-20251102-0001.jpg" alt="Gold Circle Pendant" class="pendant-image">
