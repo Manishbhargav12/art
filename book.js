@@ -9,23 +9,40 @@ const cartBtn = document.getElementById('cart-btn');
   closeCart.addEventListener('click', () => {
     cartPanel.classList.remove('open');
   });
-  
+  let selectedProduct = null;
   function openBookNow (button) {
     window.scrollTo({ top: 0, behavior: "smooth" });
      const image = button.getAttribute('data-image');
   const name = button.getAttribute('data-name');
   const original = button.getAttribute('data-original');
   const discounted = button.getAttribute('data-discounted');
+  const booking=button.getAttribute('data-booking');
+
+  selectedProduct = {
+    image,
+    name,
+    original,
+    discounted,
+    booking
+  };
 
   document.getElementById("productImg").src = image;
   document.getElementById("productTitle").textContent = name;
   document.querySelector(".discounted").textContent = "₹" + discounted;
   document.querySelector(".original").textContent = "₹" + original;
   document.querySelector(".book-container").style.display = "flex";
+  document.querySelector("#book-booking").textContent=booking;
+  document.querySelector("#cod").textContent=booking;
+  document.querySelector("#pay_amount").textContent=discounted;
+  
+  
+  // DocumentFragment.querySelector("#pay_amount").textContent=booking;
 }
 
 function closeBookNow() {
   document.querySelector('.book-container').style.display = 'none';
+  // const booking=button.getAttribute('data-booking');
+  
 }
 
 // function updatePreview() {
@@ -326,12 +343,36 @@ const overlay1 = document.getElementById("overlay");
       document.querySelectorAll(".upi-option").forEach(opt => opt.classList.remove("selected"));
       target.classList.add("selected");
     });
+    
 
-    document.querySelectorAll("input[name='payType']").forEach((radio) => {
-      radio.addEventListener("change", (e) => {
+let fullamount = null; // global variable
+
+document.querySelectorAll('.design-button').forEach(button => {
+  button.addEventListener('click', () => {
+    fullamount = button.getAttribute('data-discounted');
+    console.log("Selected Price:", fullamount);
+  });
+});
+
+let bookingamount = null; // global variable
+document.querySelectorAll('.design-button').forEach(button => {
+  button.addEventListener('click', () => {
+    bookingamount = button.getAttribute('data-booking');
+    console.log("Selected Price:", bookingamount);
+  });
+});
+
+document.querySelectorAll("input[name='payType']").forEach((radio) => {
+  radio.addEventListener("change", (e) => {
+    const confirm_amount=document.querySelector("#pay_amount")
+    confirm_amount.textContent=selectedProduct.discounted
+        // console.log("Selected payment type:", e.target.value);
         if (e.target.value === "cod") {
           codNotice.style.display = "block";
+          confirm_amount.textContent=selectedProduct.booking
+
         } else {
+          confirm_amount.textContent=selectedProduct.discounted
           codNotice.style.display = "none";
         }
       });
@@ -345,15 +386,18 @@ const overlay1 = document.getElementById("overlay");
         alert("Please select a UPI app first.");
         return;
       }
-      const upiId = "8002960419@fbpe";
+      const upiId = "BHARATPE.8002960419@fbpe";
   const payeeName = "customized artists";
 
-  let amount = paymentType === "cod" ? 100 : 499;
+  let amount = paymentType === "cod" ? selectedProduct.booking:selectedProduct.discounted;
   const upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${encodeURIComponent(amount)}&cu=INR`;
   console.log("Opening UPI link:", upiUrl);
    window.location.href = upiUrl;
+   
+
       if (paymentType === "cod") {
-        alert(`COD selected — Pay ₹99 booking charge using ${selectedUPI.dataset.app}`);
+        alert(`COD selected — Pay ${bookingamount} booking charge using ${selectedUPI.dataset.app}`);
+        
       } else {
         alert(`Proceeding with ${selectedUPI.dataset.app} (Prepaid)`);
       }
