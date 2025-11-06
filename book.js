@@ -403,7 +403,6 @@ document.querySelectorAll("input[name='payType']").forEach((radio) => {
         // document.getElementById("qrAmount").textContent = amount;
         // document.getElementById("bookPopup").style.display = "none";
         document.querySelector(".qr-popup").style.display = "flex";
-        alert(amount);
       }
       // pay_closePopup();
     }
