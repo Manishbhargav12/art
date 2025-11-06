@@ -337,12 +337,12 @@ const overlay1 = document.getElementById("overlay");
       document.body.style.overflow = "";
     }
 
-    upiList.addEventListener("click", (e) => {
-      const target = e.target.closest(".upi-option");
-      if (!target) return;
-      document.querySelectorAll(".upi-option").forEach(opt => opt.classList.remove("selected"));
-      target.classList.add("selected");
-    });
+    // upiList.addEventListener("click", (e) => {
+    //   const target = e.target.closest(".upi-option");
+    //   if (!target) return;
+    //   document.querySelectorAll(".upi-option").forEach(opt => opt.classList.remove("selected"));
+    //   target.classList.add("selected");
+    // });
     
 
 let fullamount = null; // global variable
@@ -379,27 +379,40 @@ document.querySelectorAll("input[name='payType']").forEach((radio) => {
     });
 
     function confirmPayment() {
-      const selectedUPI = document.querySelector(".upi-option.selected");
+      // const selectedUPI = document.querySelector(".upi-option.selected");
       const paymentType = document.querySelector("input[name='payType']:checked").value;
-
-      if (!selectedUPI) {
-        alert("Please select a UPI app first.");
-        return;
-      }
-      const upiId = "BHARATPE.8002960419@fbpe";
-  const payeeName = "customized artists";
-
-  let amount = paymentType === "cod" ? selectedProduct.booking:selectedProduct.discounted;
-  const upiUrl = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${encodeURIComponent(amount)}&cu=INR`;
-  console.log("Opening UPI link:", upiUrl);
-   window.location.href = upiUrl;
-   
-
+      const payeeVPA = "BHARATPE.8002960419@fbpe"; // Replace with actual UPI ID
+      const payeeName = "customized_artists"
+      // amount=100
+      // const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiUrl)}`;
+      
       if (paymentType === "cod") {
-        alert(`COD selected — Pay ${bookingamount} booking charge using ${selectedUPI.dataset.app}`);
+        amount=selectedProduct.booking
+        const upiUrl = `upi://pay?pa=${encodeURIComponent(payeeVPA)}&pn=${encodeURIComponent(payeeName)}&am=${encodeURIComponent(amount)}&cu=INR`;
+        const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiUrl)}`;
+        document.getElementById("qrImg").src = qrApi;
+        // document.getElementById("qrAmount").textContent = amount;
+        // document.getElementById("bookPopup").style.display = "none";
+        document.querySelector(".qr-popup").style.display = "flex";
         
       } else {
-        alert(`Proceeding with ${selectedUPI.dataset.app} (Prepaid)`);
+        amount=selectedProduct.discounted
+        const upiUrl = `upi://pay?pa=${encodeURIComponent(payeeVPA)}&pn=${encodeURIComponent(payeeName)}&am=${encodeURIComponent(amount)}&cu=INR`;
+        const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(upiUrl)}`;
+        document.getElementById("qrImg").src = qrApi;
+        // document.getElementById("qrAmount").textContent = amount;
+        // document.getElementById("bookPopup").style.display = "none";
+        document.querySelector(".qr-popup").style.display = "flex";
+        alert(amount);
       }
       // pay_closePopup();
     }
+  // const amount = 
+  
+    document.querySelector(".close-btn-qr").addEventListener("click", () => {
+      document.querySelector(".qr-popup").style.display = "none";
+    })
+// Close popup
+// function closePopup(id) {
+//   document.getElementById(id).style.display = "none";
+// }

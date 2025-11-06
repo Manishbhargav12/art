@@ -382,22 +382,6 @@
       <button class="pay_close-btn" onclick="pay_closePopup()">×</button>
       <h2>Complete Your Payment</h2>
 
-      <h3>Select UPI App</h3>
-      <div class="upi-list" id="upiList">
-        <div class="upi-option" data-app="PhonePe">
-          <img src="phonepe.jpeg" alt="PhonePe" />
-          <span>PhonePe</span>
-        </div>
-        <div class="upi-option" data-app="Google Pay">
-          <img src="gpay.jpeg" alt="Google Pay" />
-          <span>Google Pay</span>
-        </div>
-        <div class="upi-option" data-app="Paytm">
-          <img src="paytm.jpeg" alt="Paytm" />
-          <span>Paytm</span>
-        </div>
-      </div>
-
       <div class="pay-type">
         <h3>Choose Payment Type</h3>
         <div class="radio-group">
@@ -408,11 +392,18 @@
           COD orders require ₹<span id ="cod">99</span> booking charges before confirmation.
         </div>
       </div>
-
       <button onclick="confirmPayment()" class="pay_button">Confirm Payment of <span id="pay_amount">0</button>
     </div>
   </div>
-
+<div class="qr-popup">
+  <div class="popup-content">
+    <label for="showQR" class="close-btn-qr">&times;</label>
+    <h3>Scan to Pay</h3>
+    <img src="" id="qrImg" alt="QR Code">
+    <p>Use any UPI app to complete the payment.</p>
+  </div>
+</div>
+  
   <script src="book.js">
 
   </script>
